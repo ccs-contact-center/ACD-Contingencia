@@ -54,7 +54,8 @@ class Login extends Component {
             })
             .catch(err => console.log(err));
         });
-
+        localStorage.setItem("status", 2);
+        localStorage.setItem("user",this.state.username );
         this.props.history.replace("/Inicio");
       })
       .catch(err => {
@@ -168,8 +169,7 @@ class Login extends Component {
                       top: "105px",
                       width: "150px",
                       height: "85px",
-                      textShadow: "1px 1px 5px #000000",
-                      
+                      textShadow: "1px 1px 5px #000000"
                     }}
                   >
                     <h4>CRM Casas Atlas</h4>

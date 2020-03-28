@@ -36,4 +36,13 @@ export default class API_CCS {
       return Promise.resolve(res);
     });
   }
+
+  updateStatus(data) {
+    return this.fetch(hostURL + "/v1/Coronastuff/updateStatus", {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(res => {
+      return Promise.resolve(res);
+    });
+  }
 }

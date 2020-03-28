@@ -11,7 +11,7 @@ export default class AuthService {
   }
 
   login(username, password) {
-    return this.fetch(hostURL + "/v1/auth/login", {
+    return this.fetch(hostURL + "/v1/auth/Coronalogin", {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -47,8 +47,25 @@ export default class AuthService {
     return localStorage.getItem("id_token");
   }
 
+  updateStatus(data) {
+    return this.fetch(hostURL + "/v1/Coronastuff/updateStatus", {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(res => {
+      return Promise.resolve(res);
+    });
+  }
   logout() {
+    this.updateStatus({
+      usuario: localStorage.getItem("user"),
+      status: 2
+    }).then(res => {
+      console.log(res);
+    });
+
     localStorage.removeItem("id_token");
+    localStorage.removeItem("status");
+    localStorage.removeItem("user");
   }
 
   getProfile() {
